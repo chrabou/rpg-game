@@ -1,3 +1,6 @@
+from contextlib import nullcontext
+
+
 class Game():
 
     def __init__(self):
@@ -5,13 +8,11 @@ class Game():
     
     def config(self):
         self.__nom = input("Entrer le nom du joueur : ")
-        print("ok config")
     
     def start(self):
         self.__context = "mouvement"
         self.__butin = 40
         self.__team = []
-        print("ok start")
         
     def status(self):
         if(self.__butin == 0):
@@ -19,16 +20,34 @@ class Game():
         else:
             print(self.__nom)
             print(self.__butin)
-            # i = 0
-            # while i<=self.__team.__len__():
-            #     print()
+            print("nombre de guerriers : ...")
+            print("nombre de chasseurs : ...")
+            print("nombre de magiciens : ...\n")
             
-            print("ok status")
-            
+            if(self.__context=="mouvement"):
+                print("Vous pouvez acheter ou vous deplacer\n")
+            else :
+                print("Vous pouvez vous battre ou vous enfuire\n")
+                
+    def buy(self):
+        if(self.__context!="mouvement"):
+            res = input("Vous voulez acheter quelque chose ? [oui / non]")
+            if(res=="oui"):
+                self.__butin = self.__butin-1
+            else :
+                print("tant pis !!!\n")
             
 if __name__ == '__main__':
     g = Game()
     g.config()
     g.start()
-    g.status()
-        
+    
+    temp = "null"
+    while(temp!="fin"):
+        temp = input("Que voulez vous faire ?\n- Voir le status [status]\n- Acheter [buy]\n...\n- Arreter la partie [fin]")
+    
+        if(temp=="status"):
+            g.status()
+            
+        if(temp=="buy"):
+            g.buy()
