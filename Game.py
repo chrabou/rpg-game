@@ -3,17 +3,21 @@ from contextlib import nullcontext
 
 class Game():
 
+    # CONSTRUCTEUR DE GAME
     def __init__(self):
         print("bonjour ! ceci est un essai")
     
+    # CONFIGURATION DU JOUEUR (nom du joueur)
     def config(self):
         self.__nom = input("Entrer le nom du joueur : ")
     
+    # REMETTRE LA PARTIE A ZERO
     def start(self):
         self.__context = "mouvement"
         self.__butin = 40
         self.__team = []
-        
+    
+    # AFFICHER L'ETAT DE LA PARTIE
     def status(self):
         if(self.__butin == 0):
             print("GAME OVER")
@@ -28,7 +32,8 @@ class Game():
                 print("Vous pouvez acheter ou vous deplacer\n")
             else :
                 print("Vous pouvez vous battre ou vous enfuire\n")
-                
+    
+    # ACHETER QUELQUE CHOSE     
     def buy(self):
         if(self.__context!="mouvement"):
             res = input("Vous voulez acheter quelque chose ? [oui / non]")
@@ -36,7 +41,32 @@ class Game():
                 self.__butin = self.__butin-1
             else :
                 print("tant pis !!!\n")
+       
+    # HACENE S'EN CHARGE
+    def move(self):
+        print("salut")
+           
+             
+    # SE BATTRE
+    def fight(self):
+        if(self.__context=="combat"):
+            print("se battre")
             
+        # Si le combat est reporté
+            #...
+        # Si le combat est gagné
+            # print("GAME OVER")
+            # self.start()
+            
+    
+    
+    # NOURHENE S'EN CHARGE
+    def flee(self):
+        print("salut")
+        
+        
+          
+# METHODE MAIN 
 if __name__ == '__main__':
     g = Game()
     g.config()
